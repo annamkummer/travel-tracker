@@ -15,6 +15,8 @@ export default class Trip {
     const lodging = destination.estimatedLodgingCostPerDay * this.duration;
     const flights = destination.estimatedFlightCostPerPerson * this.travelers;
 
-    this.cost = (lodging + flights) * 1.1;
+    const total = Number(((lodging + flights) * 1.1).toFixed(0))
+
+    this.cost = total;
   }
 }
