@@ -14,8 +14,14 @@ export default class Traveler {
       return trip.userID === this.id;
     }).forEach(trip => {
       const newTrip = new Trip(trip);
-      newTrip.calcCost(destinations)
-      this.trips.push(newTrip)
+      const userTrip = {
+        status: newTrip.status,
+        city: newTrip.getCity(destinations),
+        cost: newTrip.calcCost(destinations),
+        imgSrc: newTrip.getImgSrc(destinations),
+        imgAlt: newTrip.getImgAlt(destinations),
+      }
+      this.trips.push(userTrip)
     })
   }
 

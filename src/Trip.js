@@ -1,22 +1,39 @@
 export default class Trip {
-  constructor(trip) {
-    this.id = trip.id;
-    this.destinationID = trip.destinationID;
-    this.travelers = trip.travelers;
-    this.date = trip.date;
-    this.duration = trip.duration;
-    this.status = trip.status;
+  constructor() {
+    this.id = 1,
+    this.userID = 44,
+    this.destinationID = 49,
+    this.travelers = 1,
+    this.date = "2022/09/16",
+    this.duration = 8,
+    this.status = "approved",
+    this.suggestedActivities = [ ]
   }
 
-  calcCost(destinations) {
-    const destination = destinations.find(dest => {
+  findDestination(destinations) {
+    return destinations.find(dest => {
       return dest.id === this.destinationID;
-    });
-    const lodging = destination.estimatedLodgingCostPerDay * this.duration;
-    const flights = destination.estimatedFlightCostPerPerson * this.travelers;
+    })
+  }
 
+  getCity(dests) {
+    return this.findDestination(dests).destination;
+  }
+
+  getImgSrc(dests) {
+    return this.findDestination(dests).image;
+  }
+
+  getImgAlt(dests) {
+    return this.findDestination(dests).alt;
+  }
+
+  calcCost(dests) {
+    const dest = this.findDestination(dests);
+    const lodging = dest.estimatedLodgingCostPerDay * this.duration;
+    const flights = dest.estimatedFlightCostPerPerson * this.travelers;
     const total = Number(((lodging + flights) * 1.1).toFixed(0))
 
-    this.cost = total;
+    return total;
   }
 }

@@ -8,21 +8,41 @@ import './css/base.scss';
 // import './images/turing-logo.png'
 
 
-console.log('This is the JavaScript entry file - your code begins here.');
+// console.log('This is the JavaScript entry file - your code begins here.');
 // ========================================================================
 
-import { travelers, trips, destinations } from './fetch.js'
+import { currentTraveler, travelers, trips, destinations } from './fetch.js'
+import { insertTripsHtml } from './domManipulation.js'
+import Traveler from '../src/Traveler'
+import Trip from '../src/Trip'
 
 const fetchData = () => {
-  return Promise.all([travelers, trips, destinations])
+  return Promise.all([currentTraveler(50), travelers(), trips(), destinations()])
+      // Manually adding a travelerId ^^ until login feature is implemented
     .then(data => parseData(data));
 }
 
 const parseData = (data) => {
-  return {
-    travelers: data[0],
-    trips: data[1]
+  const parsedData = {
+    currentTraveler: data[0],
+    allTravelers: data[1],
+    trips: data[2].trips,
+    destinations: data[3].destinations,
   }
+  loadPage(parsedData)
 }
 
-fetchData();
+const createUser = (dataset) => {
+  const user = new Traveler(dataset.currentTraveler)
+  user.addTrips(dataset.trips, dataset.destinations)
+  return user;
+}
+
+const loadPage = (dataset) => {
+  const currentUser = createUser(dataset)
+  console.log(currentUser)
+
+  insertTripsHtml(currentUser.trips)
+}
+
+window.addEventListener('load', fetchData)

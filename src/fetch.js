@@ -1,5 +1,11 @@
 // Consider having one GET fetch function that takes in an argument, the url
 
+export const currentTraveler = (id) => {
+  return fetch(`http://localhost:3001/api/v1/travelers/${id}`)
+    .then(response => response.json())
+    .catch(err => showError(err));
+}
+
 export const travelers = () => {
   return fetch('http://localhost:3001/api/v1/travelers')
     .then(response => response.json())
@@ -32,7 +38,7 @@ export const destinations = () => {
 // }
 
 
-
+// 
 // travelers: [
 // {
 // id: 1,
