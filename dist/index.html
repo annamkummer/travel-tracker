@@ -1,16 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Webpack Starter Kit</title>
+  <title>Travel Tracker</title>
 </head>
 <body>
-  <img src="./images/turing-logo.png" alt="turing logo">
-  
-  <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
+  <main class="main">
+    <aside class="sidebar">
+      <h1 class="logo">TravelTracker</h1>
+      <h1 class ="welcome">Hello, Name!</h1>
+      <button class="newTrip">New Trip</button>
+      <form class="request-form">
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date" required>
+        <label for="duration">Length of stay (days):</label>
+        <input type="number" id="duration" name="duration" required minlength="1" maxlength="365">
+        <label for="numTravelers">Travelers:</label>
+        <input type="number" id="numTravelers" name="numTravelers" required minlength="1" maxlength="12">
+        <label for="destination">Destination:</label>
+        <select name="destination" id="destination">
+          <option value="a">a</option>
+          <option value="b">b</option>
+          <option value="d">d</option>
+          <option value="c">c</option>
+        </select>
+        <label for="submit"></label>
+        <input type="submit" id="submit" name="submit" class="submit">
+      </form>
+      <article class="budget">
+        Annual expenses to date:
+        <h2 class="dollars">$500</h2>
+        <!-- Insert money spent this year -->
+      </article>
+    </aside>
+    <section class="trips">
+      <article class="trip">
+        Trip A
+        <!-- Insert trip info -->
+      </article>
+      <article class="trip">
+        Trip B
+        <!-- Insert trip info -->
+      </article>
+      <article class="trip">
+        Trip C
+        <!-- Insert trip info -->
+      </article>
+    </section>
+  </main>
   <script src="bundle.js"></script>
-
 </body>
 </html>
