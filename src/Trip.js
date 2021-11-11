@@ -1,13 +1,13 @@
 export default class Trip {
-  constructor() {
-    this.id = 1,
-    this.userID = 44,
-    this.destinationID = 49,
-    this.travelers = 1,
-    this.date = "2022/09/16",
-    this.duration = 8,
-    this.status = "approved",
-    this.suggestedActivities = [ ]
+  constructor(trip) {
+    this.id = trip.id;
+    this.userID = trip.userID;
+    this.destinationID = trip.destinationID;
+    this.travelers = trip.travelers;
+    this.date = trip.date;
+    this.duration = trip.duration;
+    this.status = trip.status;
+    this.suggestedActivities = trip.suggestedActivities;
   }
 
   findDestination(destinations) {

@@ -62,24 +62,23 @@ describe('Trip', function() {
     expect(Trip).to.be.a('function')
   });
 
-  it('should store id, destinationID, travelers, date, duration, and status', function() {
-    expect(newTrip.id).to.equal(3);
-    expect(newTrip.destinationID).to.equal(22);
-    expect(newTrip.travelers).to.equal(4);
-    expect(newTrip.date).to.equal("2022/05/22");
-    expect(newTrip.duration).to.equal(17);
-    expect(newTrip.status).to.equal("approved");
-    expect(newTrip.userID).to.equal(undefined);
-
+  it('should store trip data', function() {
+    expect(newTrip).to.deep.equal(trip);
   });
 
-  it('should not store userID or suggestedActivities', function() {
-    expect(newTrip.userID).to.equal(undefined);
-    expect(newTrip.suggestedActivities).to.equal(undefined);
+  it('should be able to get the destination city', function() {
+    expect(newTrip.getCity(destinations)).to.equal("Rome, Italy")
+  });
+
+  it('should be able to get the destination image source', function() {
+    expect(newTrip.getImgSrc(destinations)).to.equal("https://images.unsplash.com/photo-1515542622106-78bda8ba0e5b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80")
+  });
+
+  it('should be able to get the destination image alt text', function() {
+    expect(newTrip.getImgAlt(destinations)).to.equal("people standing inside a colosseum during the day")
   });
 
   it('should be able to calculate trip cost', function() {
-    newTrip.calcCost(destinations)
-    expect(newTrip.cost).to.equal(4543);
+    expect(newTrip.calcCost(destinations)).to.equal(4543);
   });
 });
