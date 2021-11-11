@@ -1,6 +1,121 @@
+* {
+  // border: 1px solid red;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
 /* This is an example of how to import a partial scss file*/
 @import '_variables';
 
 body {
-  background: $primary-background;
+  // background: $primary-background;
+  height: 100vh;
+  margin: 0;
+}
+
+.main {
+  height: 100%;
+  display: flex;
+  background: url('/src/images/colorful-buildings.jpg');
+  background-size: cover;
+}
+
+.sidebar {
+  width: 30%;
+  height: 90%;
+  margin: 2%;
+  padding: 1%;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $light-blue;
+  opacity: 0.9;
+  color: white;
+}
+
+.logo {
+  align-self: baseline;
+  color: $dark-blue;
+  margin: 0%;
+}
+
+.welcome {
+  margin: 10%;
+  font-size: 250%;
+}
+
+.trips {
+  width: 70%;
+  height: 90%;
+  margin: 2%;
+  padding: 1%;
+}
+
+.trip {
+  height: 25%;
+  margin: 2%;
+  padding: 1%;
+  border-radius: 15px 15px 15px 15px;
+  background-color: $dark-blue;
+  opacity: 0.8;
+  color: $white;
+}
+
+.newTrip, .submit {
+  width: 75%;
+  margin: 2%;
+  padding: 2%;
+  border-radius: 15px;
+  border: 0;
+  background-color: $yellow;
+  color: $dark-blue;
+  font-weight: bold;
+  font-size: 100%;
+
+}
+
+.request-form {
+  background-color: $dark-blue;
+  width: 75%;
+}
+
+.request-form, .budget {
+  display: flex;
+  flex-direction: column;
+  border-radius: 15px;
+  margin: 2%;
+  padding: 5%;
+}
+
+.budget {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dollars {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: url('/src/images/bills.jpg');
+  background-size: cover;
+  width: 75%;
+  border-radius: 15px;
+  margin: 2%;
+  padding: 20%;
+  font-size: 250%;
+  color: $white;
+  text-shadow: 2px 2px $dark-green;
+}
+
+input, select {
+  margin-bottom: 5%;
+  color: $dark-blue;
+}
+
+.submit {
+  margin: 10% 0% 0% 0%;
+  align-self: center;
+  padding: 3%;
 }
