@@ -15,6 +15,7 @@ export default class Traveler {
     }).forEach(trip => {
       const newTrip = new Trip(trip);
       const userTrip = {
+        date: newTrip.date,
         status: newTrip.status,
         city: newTrip.getCity(destinations),
         cost: newTrip.calcCost(destinations),

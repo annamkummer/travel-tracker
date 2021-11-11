@@ -138,29 +138,26 @@ describe('Traveler', function() {
     user.addTrips(trips, destinations);
     expect(user.trips).to.deep.equal([
       {
-        id: 3,
-        destinationID: 22,
-        travelers: 4,
         date: "2022/05/22",
-        duration: 17,
         status: "approved",
+        city: "Rome, Italy",
         cost: 4543,
+        imgSrc: "https://images.unsplash.com/photo-1515542622106-78bda8ba0e5b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80",
+        imgAlt: "people standing inside a colosseum during the day",
       }, {
-        id: 41,
-        destinationID: 25,
-        travelers: 3,
         date: "2020/08/30",
-        duration: 11,
         status: "approved",
+        city: "New York, New York",
         cost: 2778,
+        imgSrc: "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80",
+        imgAlt: "people crossing the street during the day surrounded by tall buildings and advertisements",
       }, {
-        id: 50,
-        destinationID: 16,
-        travelers: 5,
         date: "2020/07/02",
-        duration: 17,
         status: "approved",
+        city: "Bangkok, Thailand",
         cost: 6089,
+        imgSrc: "https://images.unsplash.com/photo-1563492065599-3520f775eeed?ixlib=rb-1.2.1&auto=format&fit=crop&w=1567&q=80",
+        imgAlt: "ornate buildings with a garden during the day",
       }
     ]);
   });
