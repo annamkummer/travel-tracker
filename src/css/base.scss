@@ -47,18 +47,46 @@ body {
 .trips {
   width: 70%;
   height: 90%;
-  margin: 2%;
-  padding: 1%;
+  padding: 1% 1% 1% 0%;
+  display: flex;
+  flex-flow: column wrap;
+  overflow: scroll;
 }
 
 .trip {
   height: 25%;
+  max-width: 44%;
   margin: 2%;
   padding: 1%;
   border-radius: 15px 15px 15px 15px;
   background-color: $dark-blue;
   opacity: 0.8;
   color: $white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.trip-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.city {
+  font-size: 200%;
+  margin: 0%;
+}
+
+.trip-status {
+  background-color: green;
+  padding: 2% 4% 2% 4%;
+  border-radius: 15px;
+}
+
+.trip-img {
+  border-radius: 15px;
+  max-width: 60%;
 }
 
 .newTrip, .submit {

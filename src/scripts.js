@@ -9,3 +9,20 @@ import './css/base.scss';
 
 
 console.log('This is the JavaScript entry file - your code begins here.');
+// ========================================================================
+
+import { travelers, trips, destinations } from './fetch.js'
+
+const fetchData = () => {
+  return Promise.all([travelers, trips, destinations])
+    .then(data => parseData(data));
+}
+
+const parseData = (data) => {
+  return {
+    travelers: data[0],
+    trips: data[1]
+  }
+}
+
+fetchData();
