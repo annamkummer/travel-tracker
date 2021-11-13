@@ -135,25 +135,25 @@ describe('Traveler', function() {
   });
 
   it('should be able to add trips', function() {
-    user.addTrips(trips, destinations);
+    user.addTrips(trips, destinations, "2021/11/12");
     expect(user.trips).to.deep.equal([
       {
         date: "2022/05/22",
-        status: "approved",
+        status: "upcoming",
         city: "Rome, Italy",
         cost: 4543,
         imgSrc: "https://images.unsplash.com/photo-1515542622106-78bda8ba0e5b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80",
         imgAlt: "people standing inside a colosseum during the day",
       }, {
         date: "2020/08/30",
-        status: "approved",
+        status: "past",
         city: "New York, New York",
         cost: 2778,
         imgSrc: "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80",
         imgAlt: "people crossing the street during the day surrounded by tall buildings and advertisements",
       }, {
         date: "2020/07/02",
-        status: "approved",
+        status: "past",
         city: "Bangkok, Thailand",
         cost: 6089,
         imgSrc: "https://images.unsplash.com/photo-1563492065599-3520f775eeed?ixlib=rb-1.2.1&auto=format&fit=crop&w=1567&q=80",
