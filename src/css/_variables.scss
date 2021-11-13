@@ -1,12 +1,13 @@
-$primary-background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
-;
-
 $white: #EAF3F7;
 $gray: #DADFDB;
-$yellow: #FCCE4A;
-$pink: #E6AEC1;
-$dark-blue: #027FE6;
-$light-blue: #5CCEF5;
-$dark-green: #0A2B09;
 $light-green: #68AB52;
 $reddish: #AF0B39;
+$bright-contrast: #FCCE4A;
+$dark-main: #027FE6;
+$light-main: #5CCEF5;
+$dark-secondary: #0A2B09;
+
+$back-img: '/src/images/colorful-buildings.jpg';
+
+// Not currently in use
+$pink: #E6AEC1;

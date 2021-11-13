@@ -1,0 +1,21 @@
+@mixin flex-column() {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin flex-column-center() {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@mixin border-radius-margin() {
+  border-radius: 15px;
+  margin: 2%;
+}
+
+@mixin primary-background() {
+  background: url($back-img);
+  height: 100%;
+  background-size: cover;
+}
