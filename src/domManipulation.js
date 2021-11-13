@@ -19,3 +19,8 @@ export const insertAnnualCostHtml = (cost) => {
   const annualCost = document.querySelector("#dollars")
   annualCost.innerText = `$${cost}`
 }
+
+export const toggleTripRequestForm = () => {
+  const requestForm = document.querySelector('#requestForm')
+  requestForm.classList.toggle('hidden')
+}

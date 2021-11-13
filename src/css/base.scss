@@ -98,7 +98,7 @@ body {
   max-width: 60%;
 }
 
-.newTrip, .submit {
+.new-trip, .submit {
   @include border-radius-margin();
   width: 75%;
   padding: 2%;
@@ -107,7 +107,11 @@ body {
   color: $dark-main;
   font-weight: bold;
   font-size: 100%;
+}
 
+.new-trip:hover, .submit:hover {
+  cursor: pointer;
+  background-color: $light-contrast;
 }
 
 .request-form {
@@ -147,4 +151,8 @@ input, select {
   margin: 10% 0% 0% 0%;
   align-self: center;
   padding: 3%;
+}
+
+.hidden {
+  display: none;
 }

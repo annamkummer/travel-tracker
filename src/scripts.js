@@ -12,10 +12,12 @@ import './css/base.scss';
 // ========================================================================
 
 import { currentTraveler, travelers, trips, destinations } from './fetch.js'
-import { insertTripsHtml, insertAnnualCostHtml } from './domManipulation.js'
+import { insertTripsHtml, insertAnnualCostHtml, toggleTripRequestForm } from './domManipulation.js'
 import { date, year } from './utils.js'
 import Traveler from '../src/Traveler'
-// import Trip from '../src/Trip'
+
+const newTripBtn = document.querySelector('#newTrip')
+const submitTripBtn = document.querySelector('#submit')
 
 const fetchData = () => {
   return Promise.all([currentTraveler(50), travelers(), trips(), destinations()])
@@ -50,3 +52,5 @@ const loadPage = (dataset) => {
 }
 
 window.addEventListener('load', fetchData)
+newTripBtn.addEventListener('click', toggleTripRequestForm)
+submitTripBtn.addEventListener('click', toggleTripRequestForm)
