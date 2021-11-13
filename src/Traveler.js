@@ -36,9 +36,11 @@ export default class Traveler {
       return tripYear === year;
     })
 
-    return thisYearTrips.reduce((totalCost, trip) => {
+    const cost = thisYearTrips.reduce((totalCost, trip) => {
       totalCost += trip.cost;
       return totalCost;
     }, 0)
+
+    return Number((cost * 1.1).toFixed(0))
   }
 }
