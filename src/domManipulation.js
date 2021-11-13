@@ -24,3 +24,13 @@ export const toggleTripRequestForm = () => {
   const requestForm = document.querySelector('#requestForm')
   requestForm.classList.toggle('hidden')
 }
+
+export const generateTripRequestForm = (destinations) => {
+  const destination = document.querySelector('#destination')
+
+  destinations.forEach(dest => {
+    destination.innerHTML += `
+      <option value="${dest.destination}">${dest.destination}</option>
+    `
+  })
+}

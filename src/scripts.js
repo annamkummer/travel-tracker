@@ -12,7 +12,7 @@ import './css/base.scss';
 // ========================================================================
 
 import { currentTraveler, travelers, trips, destinations } from './fetch.js'
-import { insertTripsHtml, insertAnnualCostHtml, toggleTripRequestForm } from './domManipulation.js'
+import { insertTripsHtml, insertAnnualCostHtml, toggleTripRequestForm, generateTripRequestForm } from './domManipulation.js'
 import { date, year } from './utils.js'
 import Traveler from '../src/Traveler'
 
@@ -49,8 +49,13 @@ const loadPage = (dataset) => {
   const currentYear = year();
   const cost = currentUser.calcAnnualTripCost(currentYear);
   insertAnnualCostHtml(cost);
+
+  const destinations = dataset.destinations;
+  generateTripRequestForm(destinations);
 }
 
 window.addEventListener('load', fetchData)
-newTripBtn.addEventListener('click', toggleTripRequestForm)
+newTripBtn.addEventListener('click', function() {
+  toggleTripRequestForm();
+})
 submitTripBtn.addEventListener('click', toggleTripRequestForm)
