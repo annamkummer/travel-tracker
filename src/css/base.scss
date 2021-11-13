@@ -1,41 +1,35 @@
+@import '_variables';
+@import '_mixins';
+
 * {
   // border: 1px solid red;
   font-family: 'Josefin Sans', sans-serif;
 }
 
-/* This is an example of how to import a partial scss file*/
-@import '_variables';
-
 body {
-  // background: $primary-background;
   height: 100vh;
   margin: 0;
 }
 
 .main {
-  height: 100%;
+  @include primary-background();
   display: flex;
-  background: url('/src/images/colorful-buildings.jpg');
-  background-size: cover;
 }
 
 .sidebar {
+  @include flex-column-center();
+  @include border-radius-margin();
   width: 30%;
   height: 90%;
-  margin: 2%;
   padding: 1%;
-  border-radius: 15px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: $light-blue;
+  background-color: $light-main;
   opacity: 0.9;
-  color: white;
+  color: $white;
 }
 
 .logo {
   align-self: baseline;
-  color: $dark-blue;
+  color: $dark-main;
   margin: 0%;
 }
 
@@ -54,12 +48,11 @@ body {
 }
 
 .trip {
+  @include border-radius-margin();
   height: 25%;
   max-width: 44%;
-  margin: 2%;
   padding: 1%;
-  border-radius: 15px 15px 15px 15px;
-  background-color: $dark-blue;
+  background-color: $dark-main;
   opacity: 0.8;
   color: $white;
   display: flex;
@@ -68,8 +61,7 @@ body {
 }
 
 .trip-details {
-  display: flex;
-  flex-direction: column;
+  @include flex-column();
   justify-content: space-between;
 }
 
@@ -85,12 +77,12 @@ body {
 
 .past {
   background-color: $gray;
-  color: $dark-blue;
+  color: $dark-main;
 }
 
 .current {
-  background-color: $yellow;
-  color: $dark-blue;
+  background-color: $bright-contrast;
+  color: $dark-main;
 }
 
 .upcoming {
@@ -107,56 +99,48 @@ body {
 }
 
 .newTrip, .submit {
+  @include border-radius-margin();
   width: 75%;
-  margin: 2%;
   padding: 2%;
-  border-radius: 15px;
   border: 0;
-  background-color: $yellow;
-  color: $dark-blue;
+  background-color: $bright-contrast;
+  color: $dark-main;
   font-weight: bold;
   font-size: 100%;
 
 }
 
 .request-form {
-  background-color: $dark-blue;
+  background-color: $dark-main;
   width: 75%;
 }
 
 .request-form, .budget {
-  display: flex;
-  flex-direction: column;
-  border-radius: 15px;
-  margin: 2%;
+  @include flex-column();
+  @include border-radius-margin();
   padding: 5%;
 }
 
 .budget {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  @include flex-column-center();
 }
 
 .dollars {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  @include flex-column-center();
+  @include border-radius-margin();
   justify-content: center;
   background: url('/src/images/bills.jpg');
   background-size: cover;
   width: 75%;
-  border-radius: 15px;
-  margin: 2%;
   padding: 20%;
   font-size: 250%;
   color: $white;
-  text-shadow: 2px 2px $dark-green;
+  text-shadow: 2px 2px $dark-secondary;
 }
 
 input, select {
   margin-bottom: 5%;
-  color: $dark-blue;
+  color: $dark-main;
 }
 
 .submit {
