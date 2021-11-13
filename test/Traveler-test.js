@@ -168,7 +168,7 @@ describe('Traveler', function() {
 
   it('should be able to calculate cost for trips this year', function() {
     user.addTrips(trips, destinations);
-    expect(user.calcAnnualTripCost(2020)).to.equal(8867)
+    expect(user.calcAnnualTripCost(2020)).to.equal(9754)
   });
 
 });
