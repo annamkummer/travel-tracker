@@ -14,3 +14,8 @@ export const insertTripsHtml = (userTrips) => {
     `
   })
 }
+
+export const insertAnnualCostHtml = (cost) => {
+  const annualCost = document.querySelector("#dollars")
+  annualCost.innerText = `$${cost}`
+}

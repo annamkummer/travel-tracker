@@ -12,10 +12,10 @@ import './css/base.scss';
 // ========================================================================
 
 import { currentTraveler, travelers, trips, destinations } from './fetch.js'
-import { insertTripsHtml } from './domManipulation.js'
-import { date } from './utils.js'
+import { insertTripsHtml, insertAnnualCostHtml } from './domManipulation.js'
+import { date, year } from './utils.js'
 import Traveler from '../src/Traveler'
-import Trip from '../src/Trip'
+// import Trip from '../src/Trip'
 
 const fetchData = () => {
   return Promise.all([currentTraveler(50), travelers(), trips(), destinations()])
@@ -41,8 +41,12 @@ const createUser = (dataset) => {
 }
 
 const loadPage = (dataset) => {
-  const currentUser = createUser(dataset)
-  insertTripsHtml(currentUser.trips)
+  const currentUser = createUser(dataset);
+  insertTripsHtml(currentUser.trips);
+
+  const currentYear = year();
+  const cost = currentUser.calcAnnualTripCost(currentYear);
+  insertAnnualCostHtml(cost);
 }
 
 window.addEventListener('load', fetchData)

@@ -6,3 +6,8 @@ export const date = () => {
 
   return `${year}/${month + 1}/${day}`
 }
+
+export const year = () => {
+  const today = new Date();
+  return today.getFullYear();
+}
