@@ -9,19 +9,19 @@ export default class Traveler {
     this.trips = [];
   }
 
-  addTrips(trips, destinations) {
+  addTrips(trips, destinations, date) {
     trips.filter(trip => {
       return trip.userID === this.id;
     }).forEach(trip => {
       const newTrip = new Trip(trip);
       const userTrip = {
         date: newTrip.date,
-        status: newTrip.status,
+        status: newTrip.getStatus(date),
         city: newTrip.getCity(destinations),
         cost: newTrip.calcCost(destinations),
         imgSrc: newTrip.getImgSrc(destinations),
         imgAlt: newTrip.getImgAlt(destinations),
-      }
+      };
       this.trips.push(userTrip)
     })
   }

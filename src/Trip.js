@@ -16,6 +16,24 @@ export default class Trip {
     })
   }
 
+  getStatus(date) {
+    const startDate = new Date(this.date);
+    const endDate = new Date(Number(startDate))
+    endDate.setDate(startDate.getDate() + this.duration)
+    const today = new Date(date)
+
+    if (this.status === "approved") {
+      if (endDate < today) {
+        return "past"
+      } else if (startDate > today) {
+        return "upcoming"
+      } else {
+        return "current"
+      }
+    }
+    return "pending"
+  }
+
   getCity(dests) {
     return this.findDestination(dests).destination;
   }

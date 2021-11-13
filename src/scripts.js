@@ -13,6 +13,7 @@ import './css/base.scss';
 
 import { currentTraveler, travelers, trips, destinations } from './fetch.js'
 import { insertTripsHtml } from './domManipulation.js'
+import { date } from './utils.js'
 import Traveler from '../src/Traveler'
 import Trip from '../src/Trip'
 
@@ -34,14 +35,13 @@ const parseData = (data) => {
 
 const createUser = (dataset) => {
   const user = new Traveler(dataset.currentTraveler)
-  user.addTrips(dataset.trips, dataset.destinations)
+  const today = date();
+  user.addTrips(dataset.trips, dataset.destinations, today)
   return user;
 }
 
 const loadPage = (dataset) => {
   const currentUser = createUser(dataset)
-  console.log(currentUser)
-
   insertTripsHtml(currentUser.trips)
 }
 
