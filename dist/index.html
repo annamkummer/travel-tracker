@@ -13,24 +13,24 @@
   <main class="main">
     <aside class="sidebar">
       <h1 class="logo">TravelTracker</h1>
-      <h1 class ="welcome">Hello, Name!</h1>
-      <button class="newTrip">New Trip</button>
-      <form class="request-form">
+      <h1 class ="welcome" id="welcome"></h1>
+      <button class="new-trip" id="newTrip">New Trip</button>
+      <form class="request-form hidden" id="requestForm">
         <label for="date">Date:</label>
-        <input type="date" id="date" name="date" required>
+        <input type="date" id="date" name="date">
         <label for="duration">Length of stay (days):</label>
-        <input type="number" id="duration" name="duration" required minlength="1" maxlength="365">
+        <input type="number" id="duration" name="duration">
         <label for="numTravelers">Travelers:</label>
-        <input type="number" id="numTravelers" name="numTravelers" required minlength="1" maxlength="12">
+        <input type="number" id="numTravelers" name="numTravelers">
         <label for="destination">Destination:</label>
         <select name="destination" id="destination">
-          <option value="a">a</option>
-          <option value="b">b</option>
-          <option value="d">d</option>
-          <option value="c">c</option>
         </select>
-        <label for="submit"></label>
-        <input type="submit" id="submit" name="submit" class="submit">
+        <p class="form-error hidden" id="formError"></p>
+        <div class="cost">
+          <button class="calc-cost" id="calcCost">Calculate Cost</button>
+          <h3 class="trip-cost" id="tripCost">$</h3>
+        </div>
+        <button class="submit" id="submit">Submit to Travel Agent</button>
       </form>
       <article class="budget">
         Annual expenses to date:

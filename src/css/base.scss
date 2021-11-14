@@ -25,6 +25,7 @@ body {
   background-color: $light-main;
   opacity: 0.9;
   color: $white;
+  overflow: scroll;
 }
 
 .logo {
@@ -98,7 +99,7 @@ body {
   max-width: 60%;
 }
 
-.newTrip, .submit {
+.new-trip, .submit, .calc-cost {
   @include border-radius-margin();
   width: 75%;
   padding: 2%;
@@ -107,7 +108,11 @@ body {
   color: $dark-main;
   font-weight: bold;
   font-size: 100%;
+}
 
+button:hover {
+  cursor: pointer;
+  background-color: $light-contrast;
 }
 
 .request-form {
@@ -147,4 +152,27 @@ input, select {
   margin: 10% 0% 0% 0%;
   align-self: center;
   padding: 3%;
+}
+
+.cost {
+  width: 100%;
+  font-size: 90%;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.calc-cost {
+  width: 40%;
+  margin: 0%;
+}
+
+.hidden {
+  display: none;
+}
+
+.form-error {
+  color: $pink;
+  align-self: center;
 }
