@@ -40,14 +40,18 @@ export const domUpdates = {
     requestForm.classList.toggle('hidden')
   },
 
-  showCompleteFormMessage() {
+  showCompleteFormMessage(message) {
     const formError = document.querySelector('#formError')
-    formError.innerText = "Please complete all fields"
+    if (message === '') {
+      formError.classList.add("hidden")
+    } else {
+      formError.classList.remove("hidden")
+      formError.innerText = message;
+    }
   },
 
   showTripCost(cost) {
     const tripCost = document.querySelector('#tripCost')
     tripCost.innerText = `$${cost}`
-    console.log('heya')
   }
 }

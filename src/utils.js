@@ -12,6 +12,10 @@ export const year = () => {
   return today.getFullYear();
 }
 
+export const convertDate = (date) => {
+  return date.split("-").join("/")
+}
+
 export const requestedTrip = {
   // id: null,
   // userID: null,

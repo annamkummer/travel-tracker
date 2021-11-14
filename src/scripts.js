@@ -13,7 +13,7 @@ import './css/base.scss';
 
 import { currentTraveler, travelers, trips, destinations } from './fetch.js'
 import { domUpdates } from './domManipulation.js'
-import { date, year } from './utils.js'
+import { date, year, convertDate } from './utils.js'
 import Traveler from '../src/Traveler'
 import Trip from '../src/Trip'
 
@@ -24,7 +24,7 @@ const calcCostBtn = document.querySelector('#calcCost')
 let currentUser, allTrips, allDestinations;
 
 const fetchData = () => {
-  return Promise.all([currentTraveler(50), travelers(), trips(), destinations()])
+  return Promise.all([currentTraveler(44), travelers(), trips(), destinations()])
       // Manually adding a travelerId ^^ until login feature is implemented
     .then(data => parseData(data));
 }
@@ -54,20 +54,36 @@ const loadPage = () => {
 }
 
 const checkForCompletion = () => {
+  event.preventDefault();
   const tripDate = document.querySelector('#date').value
   const tripLength = document.querySelector('#duration').value
   const tripNumTravelers = document.querySelector('#numTravelers').value
   const tripDestination = document.querySelector('#destination').value;
 
   const userInput = {
-    date: tripDate,
+    date: convertDate(tripDate),
     duration: tripLength,
     travelers: tripNumTravelers,
     destination: tripDestination
   }
 
-  tripDate && tripLength && tripNumTravelers && tripDestination ?
-    generateTripCost(userInput) : domUpdates.showCompleteFormMessage()
+  let message;
+  console.log("userInputDate", userInput.date)
+  console.log("today", date())
+  console.log("T/F", userInput.date < date())
+  if (userInput.date < date()) {
+    message = "Please enter a date in the future";
+  } else if (userInput.duration < 1) {
+    message = "Minimum trip length is one day";
+  } else if (userInput.travelers < 1) {
+    message = "Minimum number of travelers is one";
+  } else {
+    generateTripCost(userInput)
+    domUpdates.showCompleteFormMessage('')
+    return
+  }
+
+  domUpdates.showCompleteFormMessage(message)
 }
 
 const generateTripCost = (tripInfo) => {
