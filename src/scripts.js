@@ -32,6 +32,7 @@ const newTripBtn = document.querySelector('#newTrip')
 const requestForm = document.querySelector('#requestForm')
 const calcCostBtn = document.querySelector('#calcCost')
 const formError = document.querySelector('#formError')
+const submitTripBtn = document.querySelector('#submit')
 
 const fetchData = () => {
   return Promise.all([currentTraveler(44), travelers(), trips(), destinations()])
@@ -161,103 +162,9 @@ newTripBtn.addEventListener('click', directNewTrip)
 calcCostBtn.addEventListener('click', handleUserInput)
 
 // ========================================================================
-
-
-
-
-
-
-//
-
-// const submitTripBtn = document.querySelector('#submit')
-
-
-//
-
-//
-
 //
 // domUpdates.generateTripRequestForm(allDestinations);
 
-//
-
-//
-
-//
-// const checkForCompletion = () => {
-//   event.preventDefault();
-//   const tripDate = document.querySelector('#date').value
-//   const tripLength = document.querySelector('#duration').value
-//   const tripNumTravelers = document.querySelector('#numTravelers').value
-//   const tripDestination = document.querySelector('#destination').value;
-//
-//   const userInput = {
-//     date: convertDate(tripDate),
-//     duration: tripLength,
-//     travelers: tripNumTravelers,
-//     destination: tripDestination
-//   }
-//
-//   let message;
-//   console.log("userInputDate", userInput.date)
-//   console.log("today", date())
-//   console.log("T/F", userInput.date < date())
-//   if (userInput.date < date()) {
-//     message = "Please enter a date in the future";
-//   } else if (userInput.duration < 1) {
-//     message = "Minimum trip length is one day";
-//   } else if (userInput.travelers < 1) {
-//     message = "Minimum number of travelers is one";
-//   } else {
-//     generateTripCost(userInput)
-//     domUpdates.showCompleteFormMessage('')
-//     return
-//   }
-//
-//   domUpdates.showCompleteFormMessage(message)
-// }
-//
-// const generateTripCost = (tripInfo) => {
-//   event.preventDefault();
-//   domUpdates.showCompleteFormMessage('')
-//   const newUserTrip = createTrip(tripInfo);
-//   const cost = newUserTrip.calcCost(allDestinations)
-//   console.log(cost)
-//   domUpdates.showTripCost(cost)
-// }
-//
-// const createTrip = (tripInfo) => {
-//   const tripId = allDestinations.find(dest => {
-//     return dest.destination === tripInfo.destination;
-//   }).id
-//
-//   const newTrip = {
-//     id: (allTrips.length + 1),
-//     userID: currentUser.id,
-//     destinationID: tripId,
-//     travelers: tripInfo.travelers,
-//     date: tripInfo.date,
-//     duration: tripInfo.duration,
-//     status: 'pending',
-//     suggestedActivities: [],
-//   }
-//
-//   return new Trip(newTrip);
-// }
-
-//
-
-//
 // submitTripBtn.addEventListener('click', function() {
 //   domUpdates.toggleTripRequestForm();
 // });
-//
-
-//   /*
-// When user clicks this button,
-// -- 1) Ensure all fields are filled in, if not return error message
-// -- 2) create new Trip instance
-// -- 3) get Trip cost
-// -- 4) display Trip Cost
-//
-//   */
