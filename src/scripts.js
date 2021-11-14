@@ -11,16 +11,8 @@
 // console.log('This is the JavaScript entry file - your code begins here.');
 // ========================================================================
 
-/*
-When Submit button is clicked:
-- reset form
-- Post the trip to the database,
-- Add trip to Traveler's trips
-- show trips
-
-*/
 import './css/base.scss';
-import { currentTraveler, travelers, trips, destinations } from './fetch.js'
+import { currentTraveler, travelers, trips, destinations, postTrip } from './fetch.js'
 import { date, year, convertDate } from './utils.js'
 import { domUpdates } from './domManipulation.js'
 import Traveler from '../src/Traveler'
@@ -135,7 +127,7 @@ const createTrip = () => {
     userID: currentUser.id,
     destinationID: destId,
     travelers: inputs.tripNumTravelers,
-    date: inputs.tripDate,
+    date: convertDate(inputs.tripDate),
     duration: inputs.tripLength,
     status: 'pending',
     suggestedActivities: [],
@@ -157,14 +149,17 @@ const handleUserInput = () => {
   }
 }
 
+const submitTrip = () => {
+  event.preventDefault();
+  const newTrip = createTrip();
+  requestForm.reset();
+  const today = date();
+  currentUser.addTrips([newTrip], allDestinations, today);
+  domUpdates.insertTripsHtml(currentUser.trips);
+  postTrip(newTrip);
+}
+
 window.addEventListener('load', fetchData);
 newTripBtn.addEventListener('click', directNewTrip)
 calcCostBtn.addEventListener('click', handleUserInput)
-
-// ========================================================================
-//
-// domUpdates.generateTripRequestForm(allDestinations);
-
-// submitTripBtn.addEventListener('click', function() {
-//   domUpdates.toggleTripRequestForm();
-// });
+submitTripBtn.addEventListener('click', submitTrip)

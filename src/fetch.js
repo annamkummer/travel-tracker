@@ -27,3 +27,16 @@ export const destinations = () => {
 export const showError = (err) => {
   console.log(err)
 }
+
+export const postTrip = (trip) => {
+  fetch('http://localhost:3001/api/v1/trips', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(trip)
+  })
+    .then(response => response.json())
+    .then(data => console.log(">>>>>", data))
+    .catch(err => showError(err))
+}

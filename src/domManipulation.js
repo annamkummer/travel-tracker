@@ -6,7 +6,7 @@ export const domUpdates = {
 
   insertTripsHtml(userTrips) {
     const tripPane = document.querySelector("#trips")
-
+    tripPane.innerHTML = ``
     userTrips.forEach(userTrip => {
       tripPane.innerHTML += `
         <article class="trip">
