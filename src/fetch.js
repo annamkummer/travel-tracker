@@ -23,3 +23,7 @@ export const destinations = () => {
     .then(response => response.json())
     .catch(err => showError(err));
 }
+
+export const showError = (err) => {
+  console.log(err)
+}

@@ -13,7 +13,7 @@
   <main class="main">
     <aside class="sidebar">
       <h1 class="logo">TravelTracker</h1>
-      <h1 class ="welcome">Hello, Name!</h1>
+      <h1 class ="welcome" id="welcome">Hello, Name!</h1>
       <button class="new-trip" id="newTrip">New Trip</button>
       <form class="request-form hidden" id="requestForm">
         <label for="date">Date:</label>
@@ -25,9 +25,11 @@
         <label for="destination">Destination:</label>
         <select name="destination" id="destination">
         </select>
-        <p>Total cost for this trip:</p>
-        <label for="submit"></label>
-        <input type="submit" id="submit" name="submit" class="submit">
+        <div class="cost">
+          <button class="calc-cost" id="calcCost">Calculate Cost</button>
+          <h3 class="trip-cost" id="tripCost">$</h3>
+        </div>
+        <button class="submit" id="submit">Submit to Travel Agent</button>
       </form>
       <article class="budget">
         Annual expenses to date:

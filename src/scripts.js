@@ -12,12 +12,16 @@ import './css/base.scss';
 // ========================================================================
 
 import { currentTraveler, travelers, trips, destinations } from './fetch.js'
-import { insertTripsHtml, insertAnnualCostHtml, toggleTripRequestForm, generateTripRequestForm } from './domManipulation.js'
+import { domUpdates } from './domManipulation.js'
 import { date, year } from './utils.js'
 import Traveler from '../src/Traveler'
+// import Trip from '../src/Trip'
 
 const newTripBtn = document.querySelector('#newTrip')
 const submitTripBtn = document.querySelector('#submit')
+// const calcCostBtn = document.querySelector('#calcCost')
+
+let currentUser, allTrips, allDestinations;
 
 const fetchData = () => {
   return Promise.all([currentTraveler(50), travelers(), trips(), destinations()])
@@ -26,36 +30,45 @@ const fetchData = () => {
 }
 
 const parseData = (data) => {
-  const parsedData = {
-    currentTraveler: data[0],
-    allTravelers: data[1],
-    trips: data[2].trips,
-    destinations: data[3].destinations,
-  }
-  loadPage(parsedData)
+  currentUser = new Traveler(data[0]);
+  allTrips = data[2].trips;
+  allDestinations = data[3].destinations;
+  loadPage();
 }
 
-const createUser = (dataset) => {
-  const user = new Traveler(dataset.currentTraveler)
+const createUser = () => {
   const today = date();
-  user.addTrips(dataset.trips, dataset.destinations, today)
-  return user;
+  currentUser.addTrips(allTrips, allDestinations, today);
 }
 
-const loadPage = (dataset) => {
-  const currentUser = createUser(dataset);
-  insertTripsHtml(currentUser.trips);
+const loadPage = () => {
+  createUser()
 
   const currentYear = year();
   const cost = currentUser.calcAnnualTripCost(currentYear);
-  insertAnnualCostHtml(cost);
 
-  const destinations = dataset.destinations;
-  generateTripRequestForm(destinations);
+  domUpdates.welcomeUser(currentUser.getFirstName());
+  domUpdates.insertTripsHtml(currentUser.trips);
+  domUpdates.insertAnnualCostHtml(cost);
+  domUpdates.generateTripRequestForm(allDestinations);
 }
 
-window.addEventListener('load', fetchData)
+// const calcTripCost = () => {
+//   event.preventDefault();
+//   const tripDate = document.querySelector('#date').value
+//   const tripLength = document.querySelector('#duration').value
+//   const tripNumTravelers = document.querySelector('#numTravelers').value
+//   const tripDestination = document.querySelector('#destination').value
+//
+// }
+
+window.addEventListener('load', fetchData);
+
 newTripBtn.addEventListener('click', function() {
-  toggleTripRequestForm();
-})
-submitTripBtn.addEventListener('click', toggleTripRequestForm)
+  domUpdates.toggleTripRequestForm();
+});
+
+submitTripBtn.addEventListener('click', function() {
+  domUpdates.toggleTripRequestForm();
+});
+// calcCostBtn.addEventListener('click', calcTripCost)
