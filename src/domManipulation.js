@@ -40,14 +40,8 @@ export const domUpdates = {
     requestForm.classList.toggle('hidden')
   },
 
-  showCompleteFormMessage(message) {
-    const formError = document.querySelector('#formError')
-    if (message === '') {
-      formError.classList.add("hidden")
-    } else {
-      formError.classList.remove("hidden")
-      formError.innerText = message;
-    }
+  showCompleteFormMessage(formError, message) {
+    formError.innerText = message;
   },
 
   showTripCost(cost) {
