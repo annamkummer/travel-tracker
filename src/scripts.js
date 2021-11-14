@@ -15,11 +15,11 @@ import { currentTraveler, travelers, trips, destinations } from './fetch.js'
 import { domUpdates } from './domManipulation.js'
 import { date, year } from './utils.js'
 import Traveler from '../src/Traveler'
-// import Trip from '../src/Trip'
+import Trip from '../src/Trip'
 
 const newTripBtn = document.querySelector('#newTrip')
 const submitTripBtn = document.querySelector('#submit')
-// const calcCostBtn = document.querySelector('#calcCost')
+const calcCostBtn = document.querySelector('#calcCost')
 
 let currentUser, allTrips, allDestinations;
 
@@ -53,14 +53,49 @@ const loadPage = () => {
   domUpdates.generateTripRequestForm(allDestinations);
 }
 
-// const calcTripCost = () => {
-//   event.preventDefault();
-//   const tripDate = document.querySelector('#date').value
-//   const tripLength = document.querySelector('#duration').value
-//   const tripNumTravelers = document.querySelector('#numTravelers').value
-//   const tripDestination = document.querySelector('#destination').value
-//
-// }
+const checkForCompletion = () => {
+  const tripDate = document.querySelector('#date').value
+  const tripLength = document.querySelector('#duration').value
+  const tripNumTravelers = document.querySelector('#numTravelers').value
+  const tripDestination = document.querySelector('#destination').value;
+
+  const userInput = {
+    date: tripDate,
+    duration: tripLength,
+    travelers: tripNumTravelers,
+    destination: tripDestination
+  }
+
+  tripDate && tripLength && tripNumTravelers && tripDestination ?
+    generateTripCost(userInput) : domUpdates.showCompleteFormMessage()
+}
+
+const generateTripCost = (tripInfo) => {
+  event.preventDefault();
+  const newUserTrip = createTrip(tripInfo);
+  const cost = newUserTrip.calcCost(allDestinations)
+  console.log(cost)
+  domUpdates.showTripCost(cost)
+}
+
+const createTrip = (tripInfo) => {
+  const tripId = allDestinations.find(dest => {
+    return dest.destination === tripInfo.destination;
+  }).id
+
+  const newTrip = {
+    id: (allTrips.length + 1),
+    userID: currentUser.id,
+    destinationID: tripId,
+    travelers: tripInfo.travelers,
+    date: tripInfo.date,
+    duration: tripInfo.duration,
+    status: 'pending',
+    suggestedActivities: [],
+  }
+
+  return new Trip(newTrip);
+}
 
 window.addEventListener('load', fetchData);
 
@@ -71,4 +106,13 @@ newTripBtn.addEventListener('click', function() {
 submitTripBtn.addEventListener('click', function() {
   domUpdates.toggleTripRequestForm();
 });
-// calcCostBtn.addEventListener('click', calcTripCost)
+
+calcCostBtn.addEventListener('click', checkForCompletion)
+  /*
+When user clicks this button,
+-- 1) Ensure all fields are filled in, if not return error message
+-- 2) create new Trip instance
+-- 3) get Trip cost
+-- 4) display Trip Cost
+
+  */

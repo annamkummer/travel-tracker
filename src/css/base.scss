@@ -170,3 +170,8 @@ input, select {
 .hidden {
   display: none;
 }
+
+.form-error {
+  color: $pink;
+  align-self: center;
+}

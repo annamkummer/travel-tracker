@@ -38,12 +38,16 @@ export const domUpdates = {
   toggleTripRequestForm() {
     const requestForm = document.querySelector('#requestForm')
     requestForm.classList.toggle('hidden')
+  },
+
+  showCompleteFormMessage() {
+    const formError = document.querySelector('#formError')
+    formError.innerText = "Please complete all fields"
+  },
+
+  showTripCost(cost) {
+    const tripCost = document.querySelector('#tripCost')
+    tripCost.innerText = `$${cost}`
+    console.log('heya')
   }
-
 }
-
-
-// export const showTripCost = () => {
-//   console.log('heya')
-//
-// }
