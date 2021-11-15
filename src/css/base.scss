@@ -31,7 +31,7 @@ body {
 .logo {
   align-self: baseline;
   color: $dark-main;
-  margin: 0%;
+  margin: 2%;
 }
 
 .welcome {
@@ -47,6 +47,7 @@ body {
   flex-flow: row wrap;
   overflow: scroll;
 }
+
 
 .trip {
   @include border-radius-margin();
@@ -174,4 +175,29 @@ input, select {
 .form-error {
   color: $pink;
   align-self: center;
+}
+
+@media screen and (max-width: 1024px) {
+  .sidebar {
+    width: 40%;
+  }
+
+  .trips {
+    width: 60%
+  }
+
+  .trip {
+    width: 90%;
+    max-width: 90%;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .trip-img {
+    display: none;
+  }
+
+  .city, .logo, .welcome, .dollars {
+    font-size: 100%;
+  }
 }
