@@ -27,7 +27,7 @@ const formError = document.querySelector('#formError')
 const submitTripBtn = document.querySelector('#submit')
 
 const fetchData = () => {
-  return Promise.all([currentTraveler(1), travelers(), trips(), destinations()])
+  return Promise.all([currentTraveler(44), travelers(), trips(), destinations()])
       // Manually adding a travelerId ^^ until login feature is implemented
     .then(data => parseData(data));
 }
@@ -151,12 +151,17 @@ const handleUserInput = () => {
 
 const submitTrip = () => {
   event.preventDefault();
-  const newTrip = createTrip();
-  requestForm.reset();
-  const today = date();
-  currentUser.addTrips([newTrip], allDestinations, today);
-  domUpdates.insertTripsHtml(currentUser.trips);
-  postTrip(newTrip);
+  const validity = checkValidity();
+  if (validity === "valid") {
+    const newTrip = createTrip();
+    requestForm.reset();
+    const today = date();
+    currentUser.addTrips([newTrip], allDestinations, today);
+    domUpdates.insertTripsHtml(currentUser.trips);
+    postTrip(newTrip);
+  } else {
+    handleUserInput();
+  }
 }
 
 window.addEventListener('load', fetchData);
