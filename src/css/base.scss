@@ -22,8 +22,8 @@ body {
   width: 30%;
   height: 90%;
   padding: 1%;
-  background-color: $light-main;
-  opacity: 0.9;
+  background-image: linear-gradient(#E98F63, #D1848A, #906479);
+  // opacity: 0.7;
   color: $white;
   overflow: scroll;
 }
@@ -55,7 +55,7 @@ body {
   max-width: 44%;
   padding: 1%;
   background-color: $dark-main;
-  opacity: 0.8;
+  opacity: 0.9;
   color: $white;
   display: flex;
   flex-direction: row;
