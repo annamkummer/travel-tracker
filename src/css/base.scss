@@ -135,13 +135,11 @@ button:hover {
   @include flex-column-center();
   @include border-radius-margin();
   justify-content: center;
-  background: url('/src/images/bills.jpg');
-  background-size: cover;
+  background-color: $dark-main;
   width: 75%;
-  padding: 20%;
+  padding: 10%;
   font-size: 250%;
   color: $white;
-  text-shadow: 2px 2px $dark-secondary;
 }
 
 input, select {
