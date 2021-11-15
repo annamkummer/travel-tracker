@@ -11,7 +11,7 @@ export const domUpdates = {
       tripPane.innerHTML += `
         <article class="trip">
           <aside class="trip-details">
-            <div class="trip-status ${userTrip.status}">${userTrip.status}</div>
+            <div><span class="trip-status ${userTrip.status}">${userTrip.status}</span></div>
             <h3 class="city">${userTrip.city}</h3>
             <p class="trip-cost">Trip Cost: $${userTrip.cost}</p>
           </aside>

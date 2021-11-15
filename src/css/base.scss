@@ -193,6 +193,14 @@ input, select {
 }
 
 @media screen and (max-width: 800px) {
+  .sidebar {
+    width: 60%;
+  }
+
+  .trips {
+    width: 40%
+  }
+
   .trip-img {
     display: none;
   }

@@ -31,7 +31,7 @@ export default class Trip {
         return "current"
       }
     }
-    return "pending agent confirmation"
+    return "pending"
   }
 
   getCity(dests) {
