@@ -31,7 +31,7 @@ body {
 .logo {
   align-self: baseline;
   color: $dark-main;
-  margin: 0%;
+  margin: 2%;
 }
 
 .welcome {
@@ -44,9 +44,10 @@ body {
   height: 90%;
   padding: 1% 1% 1% 0%;
   display: flex;
-  flex-flow: column wrap;
+  flex-flow: row wrap;
   overflow: scroll;
 }
+
 
 .trip {
   @include border-radius-margin();
@@ -74,6 +75,7 @@ body {
 .trip-status {
   padding: 2% 4% 2% 4%;
   border-radius: 15px;
+  margin: 3%;
 }
 
 .past {
@@ -134,13 +136,11 @@ button:hover {
   @include flex-column-center();
   @include border-radius-margin();
   justify-content: center;
-  background: url('/src/images/bills.jpg');
-  background-size: cover;
+  background-color: $dark-main;
   width: 75%;
-  padding: 20%;
+  padding: 10%;
   font-size: 250%;
   color: $white;
-  text-shadow: 2px 2px $dark-secondary;
 }
 
 input, select {
@@ -175,4 +175,37 @@ input, select {
 .form-error {
   color: $pink;
   align-self: center;
+}
+
+@media screen and (max-width: 1024px) {
+  .sidebar {
+    width: 40%;
+  }
+
+  .trips {
+    width: 60%
+  }
+
+  .trip {
+    width: 90%;
+    max-width: 90%;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .sidebar {
+    width: 60%;
+  }
+
+  .trips {
+    width: 40%
+  }
+
+  .trip-img {
+    display: none;
+  }
+
+  .city, .logo, .welcome, .dollars {
+    font-size: 100%;
+  }
 }
