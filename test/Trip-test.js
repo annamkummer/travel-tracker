@@ -6,15 +6,15 @@ describe('Trip', function() {
   let trip, destinations, newTrip;
   beforeEach(function() {
     trip = {
-        id: 3,
-        userID: 3,
-        destinationID: 22,
-        travelers: 4,
-        date: "2022/05/22",
-        duration: 17,
-        status: "approved",
-        suggestedActivities: [ ]
-      };
+      id: 3,
+      userID: 3,
+      destinationID: 22,
+      travelers: 4,
+      date: "2022/05/22",
+      duration: 17,
+      status: "approved",
+      suggestedActivities: [ ]
+    };
 
     destinations = [
       {
@@ -71,7 +71,8 @@ describe('Trip', function() {
   });
 
   it('should be able to get the destination image source', function() {
-    expect(newTrip.getImgSrc(destinations)).to.equal("https://images.unsplash.com/photo-1515542622106-78bda8ba0e5b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80")
+    expect(newTrip.getImgSrc(destinations)).to
+      .equal("https://images.unsplash.com/photo-1515542622106-78bda8ba0e5b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80")
   });
 
   it('should be able to get the destination image alt text', function() {
