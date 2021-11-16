@@ -207,9 +207,10 @@ input, select {
   margin: 0%;
 }
 
-.form-error {
+.form-error, .login-error {
   color: $pink;
   align-self: center;
+  margin: 0%;
 }
 
 @media screen and (max-width: 1024px) {
@@ -247,4 +248,9 @@ input, select {
 
 .hidden {
   display: none;
+}
+
+button:disabled {
+  cursor: no-drop;
+  background-color: gray;
 }
