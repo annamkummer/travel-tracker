@@ -13,14 +13,7 @@
   <nav class="login" id="login">
     <h1>Welcome to TravelTracker!</h1>
     <div class="login-box">
-      <form class="login-details">
-        <h2>Are you a traveler or an agent?</h2>
-        <div>
-          <label for='user-status-traveler'>Traveler</label>
-          <input class='user-status' type="radio" name='user-status' value='user-status-traveler'>
-          <label for='user-status-agent'>Travel Agent</label>
-          <input class='user-status' type="radio" name='user-status' value='user-status-agent'>
-        </div>
+      <form class="login-details" id="loginDetails">
         <h2>Please enter your username and password</h2>
         <div>
           <label for="username">Username:</label>
@@ -28,7 +21,8 @@
           <label for="password">Password:</label>
           <input type="password" id="password" name="password">
         </div>
-        <button class="login-button" id="loginBtn">Log in</button>
+        <p class="login-error" id="loginError"></p>
+        <button class="login-button disabled" id="loginBtn">Log in</button>
       </form>
     </div>
   </nav>

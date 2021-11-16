@@ -37,6 +37,6 @@ export const postTrip = (trip) => {
     body: JSON.stringify(trip)
   })
     .then(response => response.json())
-    .then(data => console.log(">>>>>", data))
+    // .then(data => console.log(">>>>>", data))
     .catch(err => showError(err))
 }

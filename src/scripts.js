@@ -27,11 +27,15 @@ const formError = document.querySelector('#formError')
 const submitTripBtn = document.querySelector('#submit')
 const loginBtn = document.querySelector('#loginBtn')
 const logoutBtn = document.querySelector('#logoutBtn')
-const loginPage = document.querySelector('#login')
-const dashboard = document.querySelector('#main')
+const usernameInput = document.querySelector('#username')
+const passwordInput = document.querySelector('#password')
+const loginForm = document.querySelector('#loginDetails')
+const loginError = document.querySelector('#loginError')
 
-const fetchData = () => {
-  return Promise.all([currentTraveler(1), travelers(), trips(), destinations()])
+
+
+const fetchData = (id) => {
+  return Promise.all([currentTraveler(`${id}`), travelers(), trips(), destinations()])
       // Manually adding a travelerId ^^ until login feature is implemented
     .then(data => parseData(data));
 }
@@ -168,21 +172,37 @@ const submitTrip = () => {
   }
 }
 
-const showLogin = () => {
-  loginPage.classList.remove('hidden')
-  dashboard.classList.add('hidden')
-}
-
-const showDash = () => {
-  fetchData()
-  loginPage.classList.add('hidden')
-  dashboard.classList.remove('hidden')
+const validateCredentials = () => {
   event.preventDefault()
+  const name = usernameInput.value;
+  const chars = name.split('')
+  const traveler = chars.splice(0, 8).join('')
+  const num = Number(chars.join(''))
+  const pass = passwordInput.value;
+  const isValid = (traveler === 'traveler' && num > 0 && num < 51 && pass === 'travel')
+
+  if (isValid) {
+    domUpdates.showDash()
+    fetchData(num)
+  } else {
+    loginForm.reset();
+    loginBtn.disabled = true;
+    loginError.innerText = "Username and/or password incorrect"
+  }
 }
 
-window.addEventListener('load', showLogin);
+const checkInputs = () => {
+  loginError.innerText = ""
+  if (usernameInput.value && passwordInput.value) {
+    loginBtn.disabled = false;
+  }
+}
+
+window.addEventListener('load', domUpdates.showLogin());
 newTripBtn.addEventListener('click', directNewTrip)
 calcCostBtn.addEventListener('click', handleUserInput)
 submitTripBtn.addEventListener('click', submitTrip)
-loginBtn.addEventListener('click', showDash)
-logoutBtn.addEventListener('click', showLogin)
+loginBtn.addEventListener('click', validateCredentials)
+logoutBtn.addEventListener('click', domUpdates.showLogin())
+usernameInput.addEventListener('keyup', checkInputs)
+passwordInput.addEventListener('keyup', checkInputs)
