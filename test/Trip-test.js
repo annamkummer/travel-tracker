@@ -3,7 +3,7 @@ const expect = chai.expect;
 import Trip from '../src/Trip'
 
 describe('Trip', function() {
-  let trip, destinations, newTrip;
+  let trip, trip1, destinations, newTrip, newTrip1;
   beforeEach(function() {
     trip = {
       id: 3,
@@ -13,6 +13,17 @@ describe('Trip', function() {
       date: "2022/05/22",
       duration: 17,
       status: "approved",
+      suggestedActivities: [ ]
+    };
+
+    trip1 = {
+      id: 3,
+      userID: 3,
+      destinationID: 22,
+      travelers: 4,
+      date: "2022/05/22",
+      duration: 17,
+      status: "pending",
       suggestedActivities: [ ]
     };
 
@@ -56,6 +67,7 @@ describe('Trip', function() {
     ];
 
     newTrip = new Trip(trip)
+    newTrip1 = new Trip(trip1)
   });
 
   it('should be a function', function() {
@@ -65,6 +77,13 @@ describe('Trip', function() {
   it('should store trip data', function() {
     expect(newTrip).to.deep.equal(trip);
   });
+
+  it('should be able to get the trip status', function() {
+    expect(newTrip.getStatus('2021/11/16')).to.equal("upcoming")
+    expect(newTrip.getStatus('2022/07/16')).to.equal("past")
+    expect(newTrip.getStatus('2022/06/02')).to.equal("current")
+    expect(newTrip1.getStatus('2021/11/16')).to.equal("pending")
+  })
 
   it('should be able to get the destination city', function() {
     expect(newTrip.getCity(destinations)).to.equal("Rome, Italy")

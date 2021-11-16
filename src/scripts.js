@@ -1,5 +1,5 @@
 import './css/base.scss';
-import { currentTraveler, travelers, trips, destinations, postTrip } from './fetch.js'
+import { currentTraveler, trips, destinations, postTrip } from './fetch.js'
 import { date, year, convertDate } from './utils.js'
 import { domUpdates } from './domManipulation.js'
 import Traveler from '../src/Traveler'
@@ -19,17 +19,15 @@ const passwordInput = document.querySelector('#password')
 const loginForm = document.querySelector('#loginDetails')
 const loginError = document.querySelector('#loginError')
 
-
-
 const fetchData = (id) => {
-  return Promise.all([currentTraveler(`${id}`), travelers(), trips(), destinations()])
+  return Promise.all([currentTraveler(`${id}`), trips(), destinations()])
     .then(data => parseData(data));
 }
 
 const parseData = (datasets) => {
   // allTravelers = datasets[1].travelers;
-  allTrips = datasets[2].trips;
-  allDestinations = datasets[3].destinations;
+  allTrips = datasets[1].trips;
+  allDestinations = datasets[2].destinations;
   createUser(datasets[0], allTrips, allDestinations)
 }
 
