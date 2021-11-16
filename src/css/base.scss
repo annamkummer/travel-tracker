@@ -213,6 +213,15 @@ input, select {
   margin: 0%;
 }
 
+.fetch-error {
+  @include border-radius-margin();
+  padding: 3%;
+  align-self: center;
+  color: red;
+  background-color: $bright-contrast;
+  font-size: 125%;
+}
+
 @media screen and (max-width: 1024px) {
   .sidebar {
     width: 40%;
