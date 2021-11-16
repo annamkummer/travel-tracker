@@ -5,7 +5,7 @@ TravelTracker is an application for travel agency clients to login, view their p
 
 ## Preview:
 
-![TravelTracker-gif](src/images/demo.mov)
+![TravelTracker-gif](src/images/demo.gif)
 
 ## How to Use the App:
 
