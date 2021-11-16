@@ -11,9 +11,37 @@ body {
   margin: 0;
 }
 
-.main {
+.main, .login {
   @include primary-background();
   display: flex;
+}
+
+.login,  {
+  color: $dark-main;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-box {
+  @include border-radius-margin();
+  margin: 0;
+  background-color: $dark-main;
+  opacity: 0.8;
+  color: $white;
+  padding: 5%;
+}
+
+.login-details {
+  @include flex-column-center();
+}
+
+.login-button {
+  @include border-radius-margin();
+  width: 25%;
+  font-size: 100%;
+  font-weight: bold;
+  color: $dark-main;
 }
 
 .sidebar {
@@ -22,10 +50,17 @@ body {
   width: 30%;
   height: 90%;
   padding: 1%;
-  background-image: linear-gradient(#E98F63, #D1848A, #906479);
+  background-image: linear-gradient(#E98F63, #D1848A, #906479, $dark-main);
   // opacity: 0.7;
   color: $white;
   overflow: scroll;
+}
+
+.welcome-header {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .logo {
@@ -101,7 +136,7 @@ body {
   max-width: 60%;
 }
 
-.new-trip, .submit, .calc-cost {
+.new-trip, .submit, .calc-cost, .logout-button {
   @include border-radius-margin();
   width: 75%;
   padding: 2%;
@@ -110,6 +145,10 @@ body {
   color: $dark-main;
   font-weight: bold;
   font-size: 100%;
+}
+
+.logout-button {
+  width: 25%;
 }
 
 button:hover {
@@ -168,10 +207,6 @@ input, select {
   margin: 0%;
 }
 
-.hidden {
-  display: none;
-}
-
 .form-error {
   color: $pink;
   align-self: center;
@@ -208,4 +243,8 @@ input, select {
   .city, .logo, .welcome, .dollars {
     font-size: 100%;
   }
+}
+
+.hidden {
+  display: none;
 }
