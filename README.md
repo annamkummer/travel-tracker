@@ -1,5 +1,11 @@
 # TravelTracker
-TravelTracker is an application that shows a user's steps, hydration, and sleep data. The data is displayed using charts which show the user's data compared to the overall community.
+TravelTracker is an application for travel agency clients to login, view their past, present, and future travels, and request new trips. They can view the cost of a trip before submitting it to the agency for review as well as see their total spent on travel for the current year.
+
+<hr>
+
+## Preview:
+
+![TravelTracker-gif](src/images/demo.mov)
 
 ## How to Use the App:
 
@@ -11,14 +17,10 @@ TravelTracker is an application that shows a user's steps, hydration, and sleep 
 
 After the above steps have been followed, please do the following in order to access the data from a local server:
 
-- Clone [this](https://frontend.turing.edu/projects/Fitlit-part-two.html) repo
+- Clone [this](https://github.com/turingschool-examples/travel-tracker-api.git) repo
 - Access the root folder in your Terminal
 - Type `npm install` to install all required dependencies
 - Type `npm start` to start local server  
-
-## Preview:
-
-![FitLit-gif](src/images/new-gif.gif)
 
 ## Primary Technologies Used:
 
@@ -32,25 +34,22 @@ After the above steps have been followed, please do the following in order to ac
 - SASS
 - Lighthouse Accessibility Audit
 
-## Original Assignment:
+## Project Specs:
 
-- [FitLit - Part One](https://frontend.turing.edu/projects/Fitlit-part-one.html)
-- [FitLit - Part Two](https://frontend.turing.edu/projects/Fitlit-part-two.html)
+- [Travel Tracker](https://frontend.turing.edu/projects/travel-tracker.html)
 
 ## Contributors:
 
 - [Anna Kummer](https://github.com/annamkummer)
-- [Thomas Nguyen](https://github.com/tommi267)
-- [Adam Burgess](https://github.com/aburg15)
+- Reviews by [Eric Wang](https://github.com/ewang0)
 
-## Team Wins:
-- Able to implement Fetch API functionality and successfully import and post data from API.
-- Successful implementation of `chart.js`.
-- Followed Test-driven development principles.
-- Achieved accessibility goals
+## Wins:
+- Implementation of a login page that directs the user to the correct dashboard based on their credentials
+- Application of test-driven development principles
+- Achievement of accessibility goals while maintaining beautiful design
 
 ## Future Iterations:
-- User login
-- Display user's friends
-- Compare data between user and friends
-- Drag and drop widgets
+- Design a separate dashboard for Travel Agents to log into and view
+- Allow users to sort their trips by cost, status, alphabetized cities, or timeline
+- Sort destinations alphabetically and/or allow users to search for their desired destination
+- Implement a toggle for the user to switch to a dyslexia-friendly font
