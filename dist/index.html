@@ -10,9 +10,34 @@
   <title>Travel Tracker</title>
 </head>
 <body>
-  <main class="main">
+  <nav class="login" id="login">
+    <h1>Welcome to TravelTracker!</h1>
+    <div class="login-box">
+      <form class="login-details">
+        <h2>Are you a traveler or an agent?</h2>
+        <div>
+          <label for='user-status-traveler'>Traveler</label>
+          <input class='user-status' type="radio" name='user-status' value='user-status-traveler'>
+          <label for='user-status-agent'>Travel Agent</label>
+          <input class='user-status' type="radio" name='user-status' value='user-status-agent'>
+        </div>
+        <h2>Please enter your username and password</h2>
+        <div>
+          <label for="username">Username:</label>
+          <input type="username" id="username" name="username">
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password">
+        </div>
+        <button class="login-button" id="loginBtn">Log in</button>
+      </form>
+    </div>
+  </nav>
+  <main class="main" id="main">
     <aside class="sidebar">
-      <h1 class="logo">TravelTracker</h1>
+      <header class="welcome-header">
+        <h1 class="logo">TravelTracker</h1>
+        <button class="logout-button" id="logoutBtn">Log out</button>
+      </header>
       <h1 class ="welcome" id="welcome"></h1>
       <button class="new-trip" id="newTrip">New Trip</button>
       <form class="request-form hidden" id="requestForm">

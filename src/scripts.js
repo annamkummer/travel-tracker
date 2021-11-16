@@ -25,6 +25,10 @@ const requestForm = document.querySelector('#requestForm')
 const calcCostBtn = document.querySelector('#calcCost')
 const formError = document.querySelector('#formError')
 const submitTripBtn = document.querySelector('#submit')
+const loginBtn = document.querySelector('#loginBtn')
+const logoutBtn = document.querySelector('#logoutBtn')
+const loginPage = document.querySelector('#login')
+const dashboard = document.querySelector('#main')
 
 const fetchData = () => {
   return Promise.all([currentTraveler(1), travelers(), trips(), destinations()])
@@ -164,7 +168,21 @@ const submitTrip = () => {
   }
 }
 
-window.addEventListener('load', fetchData);
+const showLogin = () => {
+  loginPage.classList.remove('hidden')
+  dashboard.classList.add('hidden')
+}
+
+const showDash = () => {
+  fetchData()
+  loginPage.classList.add('hidden')
+  dashboard.classList.remove('hidden')
+  event.preventDefault()
+}
+
+window.addEventListener('load', showLogin);
 newTripBtn.addEventListener('click', directNewTrip)
 calcCostBtn.addEventListener('click', handleUserInput)
 submitTripBtn.addEventListener('click', submitTrip)
+loginBtn.addEventListener('click', showDash)
+logoutBtn.addEventListener('click', showLogin)
