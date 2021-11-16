@@ -1,24 +1,11 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
-
-// An example of how you tell webpack to use a CSS (SCSS) file
-// import './css/base.scss';
-
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
-// import './images/turing-logo.png'
-
-
-// console.log('This is the JavaScript entry file - your code begins here.');
-// ========================================================================
-
 import './css/base.scss';
-import { currentTraveler, travelers, trips, destinations, postTrip } from './fetch.js'
+import { currentTraveler, trips, destinations, postTrip } from './fetch.js'
 import { date, year, convertDate } from './utils.js'
 import { domUpdates } from './domManipulation.js'
 import Traveler from '../src/Traveler'
 import Trip from '../src/Trip'
 
-let currentUser, allTravelers, allTrips, allDestinations;
+let currentUser, allTrips, allDestinations;
 
 const newTripBtn = document.querySelector('#newTrip')
 const requestForm = document.querySelector('#requestForm')
@@ -32,18 +19,15 @@ const passwordInput = document.querySelector('#password')
 const loginForm = document.querySelector('#loginDetails')
 const loginError = document.querySelector('#loginError')
 
-
-
 const fetchData = (id) => {
-  return Promise.all([currentTraveler(`${id}`), travelers(), trips(), destinations()])
-      // Manually adding a travelerId ^^ until login feature is implemented
+  return Promise.all([currentTraveler(`${id}`), trips(), destinations()])
     .then(data => parseData(data));
 }
 
 const parseData = (datasets) => {
-  allTravelers = datasets[1].travelers;
-  allTrips = datasets[2].trips;
-  allDestinations = datasets[3].destinations;
+  // allTravelers = datasets[1].travelers;
+  allTrips = datasets[1].trips;
+  allDestinations = datasets[2].destinations;
   createUser(datasets[0], allTrips, allDestinations)
 }
 
@@ -196,10 +180,6 @@ const checkInputs = () => {
   if (usernameInput.value && passwordInput.value) {
     loginBtn.disabled = false;
   }
-}
-
-const test = () => {
-  console.log('>>>here')
 }
 
 window.addEventListener('load', domUpdates.showLogin);

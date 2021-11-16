@@ -1,16 +1,14 @@
-// Consider having one GET fetch function that takes in an argument, the url
-
 export const currentTraveler = (id) => {
   return fetch(`http://localhost:3001/api/v1/travelers/${id}`)
     .then(response => response.json())
     .catch(err => handleError(err));
 }
 
-export const travelers = () => {
-  return fetch('http://localhost:3001/api/v1/travelers')
-    .then(response => response.json())
-    .catch(err => handleError(err));
-}
+// export const travelers = () => {
+//   return fetch('http://localhost:3001/api/v1/travelers')
+//     .then(response => response.json())
+//     .catch(err => handleError(err));
+// }
 
 export const trips = () => {
   return fetch('http://localhost:3001/api/v1/trips')

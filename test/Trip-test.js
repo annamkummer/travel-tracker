@@ -3,18 +3,29 @@ const expect = chai.expect;
 import Trip from '../src/Trip'
 
 describe('Trip', function() {
-  let trip, destinations, newTrip;
+  let trip, trip1, destinations, newTrip, newTrip1;
   beforeEach(function() {
     trip = {
-        id: 3,
-        userID: 3,
-        destinationID: 22,
-        travelers: 4,
-        date: "2022/05/22",
-        duration: 17,
-        status: "approved",
-        suggestedActivities: [ ]
-      };
+      id: 3,
+      userID: 3,
+      destinationID: 22,
+      travelers: 4,
+      date: "2022/05/22",
+      duration: 17,
+      status: "approved",
+      suggestedActivities: [ ]
+    };
+
+    trip1 = {
+      id: 3,
+      userID: 3,
+      destinationID: 22,
+      travelers: 4,
+      date: "2022/05/22",
+      duration: 17,
+      status: "pending",
+      suggestedActivities: [ ]
+    };
 
     destinations = [
       {
@@ -56,6 +67,7 @@ describe('Trip', function() {
     ];
 
     newTrip = new Trip(trip)
+    newTrip1 = new Trip(trip1)
   });
 
   it('should be a function', function() {
@@ -66,12 +78,20 @@ describe('Trip', function() {
     expect(newTrip).to.deep.equal(trip);
   });
 
+  it('should be able to get the trip status', function() {
+    expect(newTrip.getStatus('2021/11/16')).to.equal("upcoming")
+    expect(newTrip.getStatus('2022/07/16')).to.equal("past")
+    expect(newTrip.getStatus('2022/06/02')).to.equal("current")
+    expect(newTrip1.getStatus('2021/11/16')).to.equal("pending")
+  })
+
   it('should be able to get the destination city', function() {
     expect(newTrip.getCity(destinations)).to.equal("Rome, Italy")
   });
 
   it('should be able to get the destination image source', function() {
-    expect(newTrip.getImgSrc(destinations)).to.equal("https://images.unsplash.com/photo-1515542622106-78bda8ba0e5b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80")
+    expect(newTrip.getImgSrc(destinations)).to
+      .equal("https://images.unsplash.com/photo-1515542622106-78bda8ba0e5b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80")
   });
 
   it('should be able to get the destination image alt text', function() {
