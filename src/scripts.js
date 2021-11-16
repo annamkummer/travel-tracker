@@ -198,11 +198,15 @@ const checkInputs = () => {
   }
 }
 
-window.addEventListener('load', domUpdates.showLogin());
+const test = () => {
+  console.log('>>>here')
+}
+
+window.addEventListener('load', domUpdates.showLogin);
 newTripBtn.addEventListener('click', directNewTrip)
 calcCostBtn.addEventListener('click', handleUserInput)
 submitTripBtn.addEventListener('click', submitTrip)
 loginBtn.addEventListener('click', validateCredentials)
-logoutBtn.addEventListener('click', domUpdates.showLogin())
+logoutBtn.addEventListener('click', domUpdates.showLogin)
 usernameInput.addEventListener('keyup', checkInputs)
 passwordInput.addEventListener('keyup', checkInputs)

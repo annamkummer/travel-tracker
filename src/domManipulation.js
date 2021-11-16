@@ -53,6 +53,8 @@ export const domUpdates = {
     const dashboard = document.querySelector('#main');
     const loginPage = document.querySelector('#login');
     const loginBtn = document.querySelector('#loginBtn');
+    const loginForm = document.querySelector('#loginDetails');
+    loginForm.reset()
     loginPage.classList.remove('hidden');
     dashboard.classList.add('hidden');
     loginBtn.disabled = true;
